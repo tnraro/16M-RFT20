@@ -1,0 +1,94 @@
+@font-face {
+  font-family: 'KBIZHanmaumGothic';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/KBIZHanmaumGothic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --color-link: hsl(204deg 88% 53%);
+  --color-dailin: hsl(42deg 79% 53%);
+  --color-purple: hsl(282deg 53% 32%);
+  --color-blue: hsl(229deg 79% 19%);
+  --color-gray: hsl(214deg 4% 19%);
+  --color-tier-0: linear-gradient(var(--color-dailin), hsl(42deg 83% 72%));
+  --color-tier-1: linear-gradient(var(--color-purple), hsl(282deg 48% 36%));
+  --color-tier-2: linear-gradient(var(--color-blue), hsl(229deg 48% 23%));
+  --color-tier-3: linear-gradient(var(--color-gray), hsl(214deg 4% 21%));
+  --color-brand: var(--color-dailin);
+}
+
+html,
+body,
+#__next {
+  display: flex;
+  flex-flow: column;
+  margin: 0;
+  padding: 0;
+}
+
+#__next {
+  font-family: KBIZHanmaumGothic, sans-serif;
+  gap: 64px;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 16px;
+  align-self: stretch;
+}
+
+header {
+  min-width: 506px;
+  user-select: all;
+  margin-top: 64px;
+  box-sizing: border-box;
+  border: 1px solid gainsboro;
+  border-radius: 4px;
+  padding: 16px;
+}
+
+footer {
+  height: 100vh;
+  min-width: 506px;
+}
+
+.tools {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.tools>div {
+  display: flex;
+  flex-flow: column;
+}
+.tools>div>h1 {
+  font-size: 1rem;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+
+  html,
+  body,
+  #__next {
+    align-items: stretch;
+  }
+
+  header,
+  footer {
+    min-width: 100%;
+  }
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

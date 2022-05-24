@@ -1,0 +1,73 @@
+.container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  width: 64px;
+  user-select: none;
+  cursor: crosshair;
+  gap: 4px;
+}
+
+.container:hover {
+  outline: 2px solid var(---color);
+}
+
+[data-selected-brush="0"] .container:hover {
+  ---color: var(--color-dailin);
+}
+
+[data-selected-brush="1"] .container:hover {
+  ---color: hsl(282deg 79% 53%);
+}
+
+[data-selected-brush="2"] .container:hover {
+  ---color: hsl(229deg 79% 53%);
+}
+
+[data-selected-brush="3"] .container:hover {
+  ---color: hsl(214deg 4% 19%);
+}
+
+.container figcaption {
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.portrait {
+  display: flex;
+  background: var(---background);
+}
+
+.portrait.tier0 {
+  ---background: var(--color-tier-0);
+}
+
+.portrait.tier0 img {
+  filter: brightness(1.02);
+}
+
+.portrait.tier1 {
+  ---background: var(--color-tier-1);
+}
+
+.portrait.tier1 img {
+  filter: brightness(.9) opacity(0.9);
+}
+
+.portrait.tier2 {
+  ---background: var(--color-tier-2);
+}
+
+.portrait.tier2 img {
+  filter: brightness(0.6) grayscale(0.4) opacity(0.9);
+}
+
+.portrait.tier3 {
+  ---background: var(--color-tier-3);
+}
+
+.portrait.tier3 img {
+  filter: brightness(0.2) grayscale(1);
+}
