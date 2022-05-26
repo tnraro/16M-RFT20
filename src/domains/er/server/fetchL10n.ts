@@ -23,7 +23,6 @@ export async function fetchL10n(lang = "Korean") {
   if (result.code < 200 || result.code >= 300) {
     throw new Error(`${result.code}: ${result.message}`);
   }
-  console.log(result.data);
   if (!isL10nData(result.data)) throw new Error("invalid data");
   return fetchL10nData(result.data.l10Path);
 }
