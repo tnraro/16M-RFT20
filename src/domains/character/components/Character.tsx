@@ -1,5 +1,5 @@
 import { atom, SetStateAction, useAtom, useAtomValue, WritableAtom } from "jotai";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { selectedBrushAtom } from "../../brush/atoms/selectedBrushAtom";
 import sx from "./Character.module.css";
@@ -32,7 +32,7 @@ export function Character(props: CharacterProps) {
       <div className={[sx.portrait, tierStyleMap[tier]].join(" ")}>
         <Image
           width={64}
-          height={86}
+          height={64}
           objectFit="cover"
           src={`/${props.name}_S000.webp`}
           alt={props.name}
