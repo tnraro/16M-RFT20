@@ -28,10 +28,10 @@ function Page(props: PageProps) {
       <main>
         <div className="tools">
           <BrushTool>
-            <Brush value={0} description="💛" />
-            <Brush value={1} description="💜" />
-            <Brush value={2} description="💙" />
-            <Brush value={3} description="🖤" />
+            <Brush value={0} symbol="💛" description="노란색" keyTrigger="1" />
+            <Brush value={1} symbol="💜" description="보라색" keyTrigger="2" />
+            <Brush value={2} symbol="💙" description="파란색" keyTrigger="3"/>
+            <Brush value={3} symbol="🖤" description="검정색" keyTrigger="4" />
           </BrushTool>
         </div>
         <CharacterGrid>
