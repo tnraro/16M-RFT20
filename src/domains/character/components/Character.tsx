@@ -90,6 +90,7 @@ export function Character(props: CharacterProps) {
       onTouchCancel={handleTouchEvent}
       onTouchMove={handleTouchEvent}
       onKeyDown={handleKeyboardEvent}
+      aria-labelledby={`character-${props.id} uid-0 brush-${tier}`}
     >
       <div className={[sx.portrait, tierStyleMap[tier]].join(" ")}>
         <Image
@@ -97,11 +98,12 @@ export function Character(props: CharacterProps) {
           height={64}
           objectFit="cover"
           src={`/${props.name}_S000.webp`}
-          alt={props.name}
+          alt={props.ko}
+          aria-hidden={true}
           draggable={false}
         />
       </div>
-      <figcaption role="presentation">{props.ko}</figcaption>
+      <figcaption id={`character-${props.id}`} role="presentation">{props.ko}</figcaption>
     </figure>
   );
 }

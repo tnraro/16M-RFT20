@@ -43,6 +43,14 @@ export function Brush(props: Brush) {
     <label
       className={[sx.brush].join(" ")}
       aria-selected={selectedBrush === props.value}
+      aria-labelledby={`brush-${props.value}`}
+      tabIndex={0}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          setSelectedBrush(props.value);
+        }
+      }}
       title={`[${props.keyTrigger}] ${props.description}`}
     >
       <input
@@ -52,6 +60,7 @@ export function Brush(props: Brush) {
         onChange={() => setSelectedBrush(props.value)}
       />
       {props.symbol}
+      <div id={`brush-${props.value}`} hidden>{props.description}</div>
     </label>
   );
 }
