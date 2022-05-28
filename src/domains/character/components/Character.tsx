@@ -19,15 +19,51 @@ export function Character(props: CharacterProps) {
   }, [props.id]);
   const [tier, setTier] = useAtom<number, number, void>(tierAtomRef.current ?? fakeAtom);
   const selectedBrush = useAtomValue(selectedBrushAtom);
-  const handleBrushEvent = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  const handleBrushEvent = (event: React.MouseEvent<HTMLElement>) => {
     if ((event.buttons & 1) !== 1) return;
     setTier(selectedBrush);
+  }
+  const touchRef = useRef({
+    touchs: new Map(),
+  });
+  const handleTouchEvent = (event: React.TouchEvent<HTMLElement>) => {
+    Array.from(event.changedTouches).forEach(touch => {
+      const { identifier } = touch;
+      const { clientX, clientY } = touch;
+      const touchs = touchRef.current.touchs;
+      switch (event.type) {
+        case "touchstart": {
+          touchs.set(identifier, { x: clientX, y: clientY });
+          break;
+        }
+        case "touchmove": {
+          if (!touchs.has(identifier)) break;
+          const { x, y } = touchs.get(identifier);
+          const dx = clientX - x;
+          const dy = clientY - y;
+          if (dx*dx+dy*dy >= 32) {
+            touchs.delete(identifier);
+          }
+          break;
+        }
+        case "touchend":
+        case "touchcancel": {
+          if (!touchs.has(identifier)) break;
+          setTier(selectedBrush);
+          break;
+        }
+      }
+    });
   }
   return (
     <figure
       className={sx.container}
       onMouseEnter={handleBrushEvent}
       onMouseDown={handleBrushEvent}
+      onTouchStart={handleTouchEvent}
+      onTouchEnd={handleTouchEvent}
+      onTouchCancel={handleTouchEvent}
+      onTouchMove={handleTouchEvent}
     >
       <div className={[sx.portrait, tierStyleMap[tier]].join(" ")}>
         <Image
