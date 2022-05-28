@@ -41,7 +41,7 @@ export function Character(props: CharacterProps) {
           const { x, y } = touchs.get(identifier);
           const dx = clientX - x;
           const dy = clientY - y;
-          if (dx*dx+dy*dy >= 32) {
+          if (dx * dx + dy * dy >= 32) {
             touchs.delete(identifier);
           }
           break;
@@ -55,8 +55,33 @@ export function Character(props: CharacterProps) {
       }
     });
   }
+  const handleKeyboardEvent = (event: React.KeyboardEvent) => {
+    switch (event.key) {
+      case " ":
+      case "Enter": {
+        setTier(selectedBrush);
+        event.preventDefault();
+        break;
+      }
+      case "ArrowLeft": {
+        if (!(event.target instanceof HTMLElement)) break;
+        const previousSibling = event.target.previousElementSibling;
+        if (!(previousSibling instanceof HTMLElement)) break;
+        previousSibling.focus();
+        break;
+      }
+      case "ArrowRight": {
+        if (!(event.target instanceof HTMLElement)) break;
+        const nextSibling = event.target.nextElementSibling;
+        if (!(nextSibling instanceof HTMLElement)) break;
+        nextSibling.focus();
+      }
+    }
+  }
   return (
     <figure
+      tabIndex={0}
+      role="button"
       className={sx.container}
       onMouseEnter={handleBrushEvent}
       onMouseDown={handleBrushEvent}
@@ -64,6 +89,7 @@ export function Character(props: CharacterProps) {
       onTouchEnd={handleTouchEvent}
       onTouchCancel={handleTouchEvent}
       onTouchMove={handleTouchEvent}
+      onKeyDown={handleKeyboardEvent}
     >
       <div className={[sx.portrait, tierStyleMap[tier]].join(" ")}>
         <Image
@@ -75,7 +101,7 @@ export function Character(props: CharacterProps) {
           draggable={false}
         />
       </div>
-      <figcaption>{props.ko}</figcaption>
+      <figcaption role="presentation">{props.ko}</figcaption>
     </figure>
   );
 }

@@ -11,23 +11,28 @@
   border-radius: 4px;
 }
 
-.container:hover .portrait {
+.container:focus {
+  outline: none;
+}
+
+.container:hover .portrait,
+.container:focus .portrait {
   ---outline-size: 2px;
 }
 
-[data-selected-brush="0"] .container:hover {
+[data-selected-brush="0"] .container {
   ---color: var(--color-dailin);
 }
 
-[data-selected-brush="1"] .container:hover {
+[data-selected-brush="1"] .container {
   ---color: hsl(282deg 79% 53%);
 }
 
-[data-selected-brush="2"] .container:hover {
+[data-selected-brush="2"] .container {
   ---color: hsl(229deg 79% 53%);
 }
 
-[data-selected-brush="3"] .container:hover {
+[data-selected-brush="3"] .container {
   ---color: hsl(214deg 4% 19%);
 }
 
