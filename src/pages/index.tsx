@@ -41,9 +41,9 @@ function Page(props: PageProps) {
       <footer>
         <div>
           해시태그 만든 사람: <a
-            href="https://twitter.com/Jippang_ER"
+            href="https://twitter.com/Jippang_g"
             rel="noreferrer"
-            target="_blank">@Jippang_ER</a>
+            target="_blank">@Jippang_g</a>
         </div>
         <div>
           만든 사람: <a
